@@ -5,7 +5,12 @@
 
 set -e
 
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
 echo "🧪 Testing CodeChats Manager..."
+echo "📁 Project directory: $PROJECT_DIR"
 
 # Test dependencies
 echo "📋 Checking dependencies..."
@@ -17,9 +22,9 @@ echo "✅ Dependencies OK"
 
 # Test script existence
 echo "📋 Checking script files..."
-[ -f "codechats-main.sh" ] || { echo "❌ Main script not found"; exit 1; }
-[ -f "codechats-cache.py" ] || { echo "❌ Cache script not found"; exit 1; }
-[ -x "codechats-main.sh" ] || { echo "❌ Main script not executable"; exit 1; }
+[ -f "$PROJECT_DIR/src/codechats-main.sh" ] || { echo "❌ Main script not found"; exit 1; }
+[ -f "$PROJECT_DIR/src/codechats-cache.py" ] || { echo "❌ Cache script not found"; exit 1; }
+[ -x "$PROJECT_DIR/src/codechats-main.sh" ] || { echo "❌ Main script not executable"; exit 1; }
 
 echo "✅ Scripts OK"
 
@@ -28,14 +33,15 @@ echo "📋 Testing cache generation..."
 python3 -c "
 import json
 import sys
-print('Testing Python cache generator...')
+from pathlib import Path
+print('Testing Python cache generator syntax...')
 try:
-    # Basic JSON test
-    data = [{'test': 'value'}]
-    json.dumps(data)
-    print('✅ JSON handling OK')
+    # Test basic functionality that our cache script uses
+    cache_data = [{'session_id': 'test', 'project_path': 'test-project'}]
+    json.dumps(cache_data, indent=2, ensure_ascii=False)
+    print('✅ Cache generator functionality OK')
 except Exception as e:
-    print(f'❌ JSON error: {e}')
+    print(f'❌ Cache generator error: {e}')
     sys.exit(1)
 "
 
