@@ -16,17 +16,16 @@ classifiers = [
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Unix Shell",
     "Topic :: Software Development :: Tools",
     "Topic :: Utilities",
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 
 [project.urls]
 Homepage = "https://github.com/MAUGUS2/codechats-manager"
@@ -43,11 +42,11 @@ packages = []
 
 [tool.black]
 line-length = 88
-target-version = ['py36']
+target-version = ['py38']
 include = '\.pyi?$'
 
 [tool.ruff]
-target-version = "py36"
+target-version = "py38"
 line-length = 88
 select = [
     "E",  # pycodestyle errors

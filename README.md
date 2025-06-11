@@ -224,7 +224,7 @@ codechats
 ### System Requirements
 - **macOS** (Intel/Apple Silicon) or **Linux**
 - **Bash** 4.0+ (default on modern systems)
-- **Python** 3.6+ (for cache processing)
+- **Python** 3.8+ (for cache processing)
 - **Claude Code** installed and configured
 
 ### Optional Dependencies
