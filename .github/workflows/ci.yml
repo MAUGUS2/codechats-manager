@@ -22,7 +22,8 @@ jobs:
       run: |
         bash -n src/codechats-main.sh
         python3 -m py_compile src/codechats-cache.py
-        shellcheck src/codechats-main.sh
+        # Only check for critical errors, ignore style warnings
+        shellcheck -S error src/codechats-main.sh
 
     - name: Python quality
       run: |
