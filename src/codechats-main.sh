@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Interactive CodeChats Manager for Claude Code
-# Author: Maugus LCO
+# Author: MAUGUS ✌️
 # Usage: codechats
 # Global English Version
 
@@ -980,3 +980,7 @@ main() {
 
 # Run main function
 main "$@"
+
+# CodeChats Manager v1.0.0 - Interactive conversation history manager for Claude Code
+# by MAUGUS ✌️
+# Repository: https://github.com/MAUGUS2/codechats-manager

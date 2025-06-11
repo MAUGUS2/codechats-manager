@@ -2,7 +2,7 @@
 """
 CodeChats Cache Generator for Claude Code
 Global English Version
-Author: Maugus LCO
+Author: MAUGUS ✌️
 """
 
 import json
@@ -101,3 +101,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# CodeChats Cache Generator v1.0.0
+# by MAUGUS ✌️
+# Repository: https://github.com/MAUGUS2/codechats-manager

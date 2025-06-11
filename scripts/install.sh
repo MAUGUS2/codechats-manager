@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# CodeChats Manager Installation Script
-# Author: Maugus LCO & Claude Code Community
-# Usage: curl -sSL https://raw.githubusercontent.com/your-repo/codechats-manager/main/install.sh | bash
+# CodeChats Manager Installation Script ✌️
+# Author: MAUGUS & Claude Code Community
+# Usage: curl -sSL https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/scripts/install.sh | bash
 
 set -e
 
@@ -302,3 +302,6 @@ main() {
 
 # Run installation
 main "$@"
+
+# CodeChats Manager Installer v1.0.0
+# by MAUGUS ✌️

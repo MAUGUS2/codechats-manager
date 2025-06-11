@@ -31,20 +31,20 @@ Choose an option:
 
 ### Opção 1: Uma linha (Recomendado)
 ```bash
-curl -sSL https://raw.githubusercontent.com/maugus/codechats-manager/main/quick-install.sh | bash
+curl -sSL https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/scripts/quick-install.sh | bash
 ```
 
 ### Opção 2: Manual (3 comandos)
 ```bash
-git clone https://github.com/maugus/codechats-manager.git
+git clone https://github.com/MAUGUS2/codechats-manager.git
 cd codechats-manager  
-./install.sh
+./scripts/install.sh
 ```
 
 ### Opção 3: Só o essencial
 ```bash
 # Baixe apenas o script principal
-curl -o codechats https://raw.githubusercontent.com/maugus/codechats-manager/main/codechats-main.sh
+curl -o codechats https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/src/codechats-main.sh
 chmod +x codechats
 ./codechats
 ```

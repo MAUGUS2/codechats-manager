@@ -33,7 +33,7 @@ codechats-manager/
 
 ### 1. Clone do projeto
 ```bash
-git clone https://github.com/maugus/codechats-manager.git
+git clone https://github.com/MAUGUS2/codechats-manager.git
 cd codechats-manager
 ```
 
@@ -250,3 +250,5 @@ python3 -m json.tool ~/.claude/temp/codechats_cache.json | head -20
 ---
 
 Este guia é mantido atualizado conforme o projeto evolui. Para dúvidas ou sugestões, abra uma issue no repositório.
+
+*by MAUGUS ✌️*

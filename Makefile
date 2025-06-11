@@ -1,4 +1,4 @@
-# CodeChats Manager Makefile
+# CodeChats Manager Makefile ✌️
 
 .PHONY: help install test lint format clean package dev-setup
 

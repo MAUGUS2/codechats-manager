@@ -6,10 +6,10 @@ This document provides basic usage examples for CodeChats Manager.
 
 ```bash
 # Quick installation
-curl -sSL https://raw.githubusercontent.com/maugus/codechats-manager/main/scripts/quick-install.sh | bash
+curl -sSL https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/scripts/quick-install.sh | bash
 
 # Or clone and install
-git clone https://github.com/maugus/codechats-manager.git
+git clone https://github.com/MAUGUS2/codechats-manager.git
 cd codechats-manager
 make install
 ```
@@ -109,3 +109,6 @@ make package
 2. **Use descriptive search terms**: Try technical terms like "authentication", "deployment", "testing"
 3. **Explore by project**: Use option [2] to see all projects you've worked on
 4. **Regular review**: Use option [3] to see all recent conversations across projects
+
+---
+*by MAUGUS ✌️*

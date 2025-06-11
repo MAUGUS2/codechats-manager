@@ -3,7 +3,7 @@ name = "codechats-manager"
 version = "1.0.0"
 description = "Interactive conversation history manager for Claude Code"
 authors = [
-    {name = "Maugus LCO", email = "maugus@example.com"},
+    {name = "MAUGUS", email = "maugus.gate@gmail.com"},
 ]
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -29,10 +29,10 @@ classifiers = [
 requires-python = ">=3.6"
 
 [project.urls]
-Homepage = "https://github.com/maugus/codechats-manager"
-Documentation = "https://github.com/maugus/codechats-manager/blob/main/docs/"
-Repository = "https://github.com/maugus/codechats-manager.git"
-Issues = "https://github.com/maugus/codechats-manager/issues"
+Homepage = "https://github.com/MAUGUS2/codechats-manager"
+Documentation = "https://github.com/MAUGUS2/codechats-manager/blob/main/docs/"
+Repository = "https://github.com/MAUGUS2/codechats-manager.git"
+Issues = "https://github.com/MAUGUS2/codechats-manager/issues"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]

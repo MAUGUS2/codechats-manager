@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# CodeChats Manager - Instalação Super Simples
-# Uma linha: curl -sSL https://[...]/quick-install.sh | bash
+# CodeChats Manager - Quick Installation ✌️
+# One line: curl -sSL https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/scripts/quick-install.sh | bash
 
 set -e
 
@@ -118,7 +118,9 @@ echo "  ~/.claude/temp/codechats-cache.py"
 echo "  ~/.claude/commands/codechats"
 echo
 echo -e "${BLUE}🔗 Links úteis:${NC}"
-echo "  📚 Documentação: https://github.com/maugus/codechats-manager"
-echo "  🐛 Issues: https://github.com/maugus/codechats-manager/issues"
+echo "  📚 Documentação: https://github.com/MAUGUS2/codechats-manager"
+echo "  🐛 Issues: https://github.com/MAUGUS2/codechats-manager/issues"
 echo
-echo -e "${YELLOW}💡 Teste agora mesmo: ${GREEN}codechats${NC}"
+echo -e "${YELLOW}💡 Try it now: ${GREEN}codechats${NC}"
+echo
+echo -e "${BLUE}✌️${NC}"
