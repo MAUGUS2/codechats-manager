@@ -1,0 +1,13 @@
+/Users/maugus/.claude/temp/codechats-manager-package/CHANGELOG.md
+/Users/maugus/.claude/temp/codechats-manager-package/FILES.txt
+/Users/maugus/.claude/temp/codechats-manager-package/LICENSE
+/Users/maugus/.claude/temp/codechats-manager-package/README.md
+/Users/maugus/.claude/temp/codechats-manager-package/codechats-cache.py
+/Users/maugus/.claude/temp/codechats-manager-package/codechats-main.sh
+/Users/maugus/.claude/temp/codechats-manager-package/docs/ARCHITECTURE.md
+/Users/maugus/.claude/temp/codechats-manager-package/docs/CONTRIBUTING.md
+/Users/maugus/.claude/temp/codechats-manager-package/docs/EXAMPLES.md
+/Users/maugus/.claude/temp/codechats-manager-package/docs/TROUBLESHOOTING.md
+/Users/maugus/.claude/temp/codechats-manager-package/install.sh
+/Users/maugus/.claude/temp/codechats-manager-package/scripts/dev-setup.sh
+/Users/maugus/.claude/temp/codechats-manager-package/scripts/test.sh

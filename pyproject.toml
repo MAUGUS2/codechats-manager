@@ -1,0 +1,72 @@
+[project]
+name = "codechats-manager"
+version = "1.0.0"
+description = "Interactive conversation history manager for Claude Code"
+authors = [
+    {name = "Maugus LCO", email = "maugus@example.com"},
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["claude-code", "conversation", "history", "manager", "cli"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Unix Shell",
+    "Topic :: Software Development :: Tools",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.6"
+
+[project.urls]
+Homepage = "https://github.com/maugus/codechats-manager"
+Documentation = "https://github.com/maugus/codechats-manager/blob/main/docs/"
+Repository = "https://github.com/maugus/codechats-manager.git"
+Issues = "https://github.com/maugus/codechats-manager/issues"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = []
+
+[tool.black]
+line-length = 88
+target-version = ['py36']
+include = '\.pyi?$'
+
+[tool.ruff]
+target-version = "py36"
+line-length = 88
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+]
