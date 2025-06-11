@@ -1,19 +1,19 @@
 # 💬 CodeChats Manager
 
-**Uma ferramenta simples para navegar e gerenciar suas conversas do Claude Code de forma visual e intuitiva.**
+**A simple tool to navigate and manage your Claude Code conversations visually and intuitively.**
 
 ![Demo](https://img.shields.io/badge/demo-working-green.svg) ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-blue.svg) ![Easy Install](https://img.shields.io/badge/install-one%20command-brightgreen.svg)
 
-## 🎯 O que faz?
+## 🎯 What does it do?
 
-Transforma isso (difícil de navegar):
+Transforms this (hard to navigate):
 ```
 ~/.claude/projects/Users-maugus-projects-myapp/abc123.jsonl
 ~/.claude/projects/Users-maugus-projects-myapp/def456.jsonl
 ~/.claude/projects/Users-john-work-api/ghi789.jsonl
 ```
 
-Nisso (fácil e visual):
+Into this (easy and visual):
 ```
 💬 CODECHATS MANAGER
 ════════════════════════════════════════════════════════════
@@ -27,300 +27,293 @@ Choose an option:
 [4] 🔍 Search by specific term
 ```
 
-## 🚀 Instalação Super Simples
+## 🚀 Super Simple Installation
 
-### Opção 1: Uma linha (Recomendado)
+### Option 1: One line (Recommended)
 ```bash
 curl -sSL https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/scripts/quick-install.sh | bash
 ```
 
-### Opção 2: Manual (3 comandos)
+### Option 2: Manual (3 commands)
 ```bash
 git clone https://github.com/MAUGUS2/codechats-manager.git
 cd codechats-manager  
 ./scripts/install.sh
 ```
 
-### Opção 3: Só o essencial
+### Option 3: Just the essentials
 ```bash
-# Baixe apenas o script principal
+# Download only the main script
 curl -o codechats https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/src/codechats-main.sh
 chmod +x codechats
 ./codechats
 ```
 
-## 📍 Como funciona? (Entenda em 2 minutos)
+## 📍 How does it work? (Understand in 2 minutes)
 
-### 🤔 O problema: Claude Code salva tudo, mas onde?
+### 🤔 The problem: Claude Code saves everything, but where?
 
-Toda vez que você conversa com Claude Code, ele **automaticamente salva** a conversa no seu computador:
+Every time you talk to Claude Code, it **automatically saves** the conversation on your computer:
 
 ```bash
-# Você está trabalhando aqui
-/Users/joão/meu-webapp
+# You're working here
+/Users/john/my-webapp
 
-# Claude Code salva a conversa aqui (automático)
-~/.claude/projects/Users-joao-meu-webapp/abc123def456.jsonl
+# Claude Code saves the conversation here (automatic)
+~/.claude/projects/Users-john-my-webapp/abc123def456.jsonl
 ```
 
-**O arquivo contém toda a conversa:**
+**The file contains the entire conversation:**
 ```json
-{"timestamp": "2024-01-15T10:30:00Z", "type": "user", "message": {"content": "Como criar um botão React?"}}
-{"timestamp": "2024-01-15T10:30:05Z", "type": "assistant", "message": {"content": "Vou te ajudar! Aqui está..."}}
-{"timestamp": "2024-01-15T10:31:00Z", "type": "user", "message": {"content": "E como adicionar onClick?"}}
+{"timestamp": "2024-01-15T10:30:00Z", "type": "user", "message": {"content": "How to create a React button?"}}
+{"timestamp": "2024-01-15T10:30:05Z", "type": "assistant", "message": {"content": "I'll help you! Here's..."}}
+{"timestamp": "2024-01-15T10:31:00Z", "type": "user", "message": {"content": "And how to add onClick?"}}
 ```
 
-### 😤 O problema real: Como encontrar suas conversas?
+### 😤 The real problem: How to find your conversations?
 
-**Cenário típico:**
-- Você conversou sobre autenticação semana passada
-- Mas foi em qual projeto? 🤷‍♂️
-- Em qual arquivo? `abc123.jsonl` ou `def456.jsonl`? 🤷‍♂️
-- Como ler arquivo JSON? 😅
+**Typical scenario:**
+- You talked about authentication last week
+- But which project was it? 🤷‍♂️
+- In which file? `abc123.jsonl` or `def456.jsonl`? 🤷‍♂️
+- How to read JSON files? 😅
 
-**Tentativa manual (difícil):**
+**Manual attempt (difficult):**
 ```bash
 find ~/.claude -name "*.jsonl" | xargs grep -l "authentication" | head -5
-cat ~/.claude/projects/Users-joao-meu-webapp/abc123def456.jsonl | jq '...'
+cat ~/.claude/projects/Users-john-my-webapp/abc123def456.jsonl | jq '...'
 ```
 
-### ✨ Nossa solução: Interface visual simples
+### ✨ Our solution: Simple visual interface
 
-**Com CodeChats Manager:**
+**With CodeChats Manager:**
 ```bash
 codechats
-# Interface aparece automaticamente
+# Interface appears automatically
 
 [4] 🔍 Search by specific term
 > authentication
 
-# Resultados aparecem organizados:
-[A] 🔥 [Today 14:30] Sistema de Login (auth, JWT)
-    📁 meu-webapp
-    💬 "Como implementar autenticação JWT no React?"
+# Results appear organized:
+[A] 🔥 [Today 14:30] Login System (auth, JWT)
+    📁 my-webapp
+    💬 "How to implement JWT authentication in React?"
+```
 
-[B] ⚡ [01-10] API Security (auth, middleware)  
-    📁 meu-backend
-    💬 "Preciso proteger rotas da API com middleware..."
-
-> A
+**Select and continue:**
+```bash
 [5] 🔄 Continue this conversation
-# Usa comando nativo do Claude Code: continueconversation abc123def456
+# Opens Claude Code exactly where you left off
 ```
 
-### 🔄 Workflow completo integrado
+## 🔍 How Claude Code actually works (transparency)
 
-**1. Trabalho normal com Claude Code:**
+### File Structure
 ```bash
-cd ~/meu-projeto
-claude-code
-# Conversa normalmente sobre seu código
-# Claude Code salva automaticamente
+~/.claude/projects/
+├── Users-john-webapp/           # Your project: /Users/john/webapp  
+│   ├── abc123.jsonl            # Conversation 1
+│   ├── def456.jsonl            # Conversation 2
+│   └── ghi789.jsonl            # Conversation 3
+└── Users-john-api/             # Your project: /Users/john/api
+    ├── xyz321.jsonl            # Conversation 4
+    └── uvw654.jsonl            # Conversation 5
 ```
 
-**2. Consulta histórico quando precisar:**
+### Path Encoding Rules
+- Original: `/Users/john/my-webapp` 
+- Becomes: `Users-john-my-webapp`
+- **Rule**: Replace `/` with `-` and remove special characters
+
+### File Format (JSONL)
+- **One line = one message** (user or assistant)
+- **Timestamps** in ISO 8601 format
+- **Session IDs** are random UUIDs
+- **Auto-saved** every interaction
+
+## 💡 Why this tool exists?
+
+**Problem**: Claude Code conversations are **gold mines** of solutions, but finding them is like searching for a needle in a haystack.
+
+**Solution**: CodeChats Manager gives you:
+- 🎯 **Smart navigation** by project
+- 🔍 **Intelligent search** across all conversations  
+- 📊 **Visual organization** with metadata
+- 🔄 **Easy continuation** with native Claude Code integration
+- ⚡ **Fast access** to your development history
+
+## 🔧 Features
+
+### 🎯 Smart Project Navigation
+- Automatically detects your current project
+- Shows conversations relevant to your current work
+- Browse other projects you've worked on
+
+### 🔍 Intelligent Search
+- Search across all conversations by content
+- Smart highlighting of search terms
+- Quick filtering by technical topics
+
+### 📊 Rich Metadata
+- Conversation timestamps and duration
+- Message count and activity indicators  
+- Auto-categorization (architecture, debugging, etc.)
+- Project context and location
+
+### 🔄 Seamless Integration
+- Direct integration with Claude Code's `continueconversation` command
+- Preserves original conversation files (read-only)
+- Works with existing Claude Code workflows
+
+### ⚡ Performance Optimized
+- Smart caching (60-minute refresh)
+- Handles 100+ conversations efficiently
+- Background processing for large datasets
+- Instant navigation between cached results
+
+## 🛠️ How to use
+
+### Basic Workflow
+1. **Navigate to your project**: `cd ~/my-project`
+2. **Launch manager**: `codechats`
+3. **Choose what you need**:
+   - `[1]` Current project conversations
+   - `[2]` Explore other projects
+   - `[3]` View all conversations
+   - `[4]` Search by term
+
+### Search Examples
 ```bash
-codechats
-# Navega visualmente por todas as conversas
-# Encontra rapidamente o que precisa
-# Continua conversa antiga se necessário
+# Technical searches
+[4] Search: "authentication"
+[4] Search: "deployment" 
+[4] Search: "bug fix"
+[4] Search: "React hooks"
+
+# Project-specific
+[2] Projects → Select → Browse history
 ```
 
-**3. Resultado:**
-- ✅ Nunca mais perder conversas importantes
-- ✅ Encontrar soluções que já funcionaram
-- ✅ Continuar desenvolvimento onde parou
-- ✅ Aprender com padrões das suas conversas
-
-### 🎯 Por que funciona tão bem?
-
-**Claude Code faz sua parte:**
-- Salva todas as conversas automaticamente
-- Organiza por projeto (diretório)
-- Formato JSON estruturado
-
-**CodeChats Manager complementa:**
-- Transforma dados técnicos em interface amigável
-- Adiciona busca inteligente
-- Permite navegação visual
-- Integra com comandos do Claude Code
-
-**Resultado:** **Plug and play** - instala e funciona imediatamente!
-
-## 🛠️ Configuração do Claude Code
-
-### Verificar se está funcionando
-
+### Continue Previous Work
 ```bash
-# 1. Verifique se o Claude Code está salvando conversas
-ls ~/.claude/projects/
-
-# 2. Se vazio, rode algumas conversas no Claude Code primeiro
-claude-code
-
-# 3. Depois teste o CodeChats Manager
-codechats
+# After finding a conversation
+[A] Select conversation
+[5] Continue this conversation
+# Claude Code opens with full context
 ```
 
-### Configuração manual (se necessário)
+## 🎉 Benefits
 
-Se o Claude Code não estiver salvando conversas:
+### For Daily Development
+- **Save time**: Find solutions you've already discussed
+- **Learn patterns**: Review your problem-solving approaches
+- **Build knowledge**: Access your personal development database
 
+### For Team Collaboration  
+- **Share context**: Show teammates relevant conversations
+- **Document decisions**: Conversations become searchable documentation
+- **Onboard faster**: New team members can see development history
+
+### For Learning
+- **Track progress**: See how your skills develop over time
+- **Review techniques**: Revisit successful debugging sessions
+- **Build expertise**: Your conversations become a personal knowledge base
+
+## 📋 Requirements
+
+### System Requirements
+- **macOS** (Intel/Apple Silicon) or **Linux**
+- **Bash** 4.0+ (default on modern systems)
+- **Python** 3.6+ (for cache processing)
+- **Claude Code** installed and configured
+
+### Optional Dependencies
+- `jq` (JSON processing, auto-installed)
+- `pbcopy` (macOS) or `xclip` (Linux) for clipboard integration
+
+## 🔧 Advanced Configuration
+
+### Cache Management
 ```bash
-# Criar estrutura necessária
-mkdir -p ~/.claude/projects
+# Cache is automatically refreshed every 60 minutes
+# Manual refresh:
+~/.claude/temp/codechats-cache.py
 
-# Verificar configuração do Claude Code
-claude-code --help | grep -i history
-
-# Habilitar histórico (se disponível)
-claude-code --enable-history
+# Cache location:
+~/.claude/temp/codechats_cache.json
 ```
 
-## 📖 Como usar
-
-### Comandos disponíveis
-
-**🆕 Nosso comando (principal):**
-- `codechats` - Interface visual completa para gerenciar conversas
-
-**🔧 Comando nativo do Claude Code:**  
-- `continueconversation <session-id>` - Continua conversa específica
-
-### Interface básica
+### Custom Installation Path
 ```bash
-# Inicie o gerenciador
-codechats
+# Default installation:
+~/.claude/temp/codechats-main.sh      # Main script
+~/.claude/temp/codechats-cache.py     # Cache generator
+~/.claude/commands/codechats          # Global command
 
-# Navegue com letras/números
-[1] Ver conversas do projeto atual
-[2] Explorar outros projetos  
-[3] Ver todas as conversas
-[4] Buscar por termo
-[5] Sair
-
-# Dentro de uma conversa
-[1] 👀 Ver últimas 10 mensagens
-[2] 📄 Ver conversa completa  
-[3] 🔍 Buscar termo na conversa
-[4] 📋 Copiar caminho do arquivo
-[5] 🔄 Continuar conversa
+# Custom installation:
+export CODECHATS_INSTALL_DIR="/custom/path"
+./scripts/install.sh
 ```
 
-### Exemplos práticos
+## 🐛 Troubleshooting
 
-**Encontrar conversa sobre erro:**
+### Common Issues
+
+**Command not found: `codechats`**
 ```bash
-codechats → [4] Search → "error" → [A] Abrir resultado
+# Check installation
+ls -la ~/.claude/commands/codechats
+
+# Add to PATH manually
+export PATH="$PATH:$HOME/.claude/commands"
+echo 'export PATH="$PATH:$HOME/.claude/commands"' >> ~/.bashrc
 ```
 
-**Continuar trabalho de ontem:**
+**No conversations found**
 ```bash
-codechats → [3] All chats → [B] Conversa de ontem → [5] Continue
+# Check Claude Code data directory
+ls -la ~/.claude/projects/
+
+# Verify you've had Claude Code conversations
+# conversations are auto-saved after each session
 ```
 
-**Ver projeto específico:**
+**Permission denied**
 ```bash
-cd ~/meu-projeto
-codechats → [1] Current project
+# Fix permissions
+chmod +x ~/.claude/temp/codechats-main.sh
+chmod +x ~/.claude/commands/codechats
 ```
 
-## 🔧 Requisitos
+### Getting Help
+- 📚 [Documentation](https://github.com/MAUGUS2/codechats-manager/blob/main/docs/)
+- 🐛 [Report Issues](https://github.com/MAUGUS2/codechats-manager/issues)
+- 💬 [Discussions](https://github.com/MAUGUS2/codechats-manager/discussions)
 
-**Obrigatórios:**
-- Claude Code instalado e funcionando
-- `bash` ou `zsh` 
-- `jq` (processador JSON)
-- `python3`
+## 🤝 Contributing
 
-**Opcionais:**
-- `pbcopy` (macOS) ou `xclip` (Linux) para copiar caminhos
+We welcome contributions! See our [Contributing Guide](https://github.com/MAUGUS2/codechats-manager/blob/main/docs/CONTRIBUTING.md) for details.
 
-**Instalação de dependências:**
+### Quick Start for Contributors
 ```bash
-# macOS
-brew install jq python3
-
-# Ubuntu/Debian  
-sudo apt install jq python3
-
-# CentOS/RHEL
-sudo yum install jq python3
+git clone https://github.com/MAUGUS2/codechats-manager.git
+cd codechats-manager
+make dev-setup
+make dev-install
 ```
 
-## ❓ Problemas comuns
+## 📄 License
 
-### "Command not found: codechats"
-```bash
-# Adicione ao PATH
-echo 'export PATH="$HOME/.claude/commands:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
+MIT License - see [LICENSE](LICENSE) file for details.
 
-### "No conversations found"
-```bash
-# Verifique se Claude Code está salvando
-ls ~/.claude/projects/
-# Se vazio, rode algumas conversas no Claude Code primeiro
-```
+## 🙏 Acknowledgments
 
-### Cache não atualiza
-```bash
-# Force refresh  
-rm ~/.claude/temp/codechats_cache.json
-codechats
-```
-
-## 🤝 Transparência total
-
-### O que o script faz exatamente:
-
-1. **Lê arquivos** em `~/.claude/projects/` (somente leitura)
-2. **Cria cache** em `~/.claude/temp/codechats_cache.json`
-3. **Instala comando** em `~/.claude/commands/codechats`
-4. **Adiciona ao PATH** no seu `.zshrc`/.bashrc`
-
-### O que NÃO faz:
-
-- ❌ Não modifica suas conversas originais
-- ❌ Não envia dados para internet
-- ❌ Não instala dependências automáticamente
-- ❌ Não modifica configurações do Claude Code
-
-### Arquivos criados:
-
-```bash
-~/.claude/commands/codechats           # Comando global
-~/.claude/temp/codechats-main.sh       # Script principal  
-~/.claude/temp/codechats-cache.py      # Gerador de cache
-~/.claude/temp/codechats_cache.json    # Cache das conversas
-```
-
-### Desinstalar completamente:
-
-```bash
-rm -rf ~/.claude/temp/codechats*
-rm -f ~/.claude/commands/codechats
-# Remover linha do PATH do ~/.zshrc manualmente
-```
-
-## 🎉 É isso!
-
-**3 passos para começar:**
-1. `curl -sSL https://[...]/quick-install.sh | bash`
-2. `codechats`
-3. Navegar e aproveitar! 
-
-**Funciona em:**
-- ✅ macOS (testado)
-- ✅ Linux (testado)  
-- ✅ WSL (testado)
-
-**Suporte:**
-- 📚 [Documentação completa](docs/)
-- 🐛 [Issues no GitHub](https://github.com/maugus/codechats-manager/issues)
-- 💬 [Discussões](https://github.com/maugus/codechats-manager/discussions)
+- **Claude Code Team** - For creating an amazing development tool
+- **Open Source Community** - For inspiration and best practices
+- **Early Testers** - For feedback and bug reports
 
 ---
 
-*Feito com ❤️ para a comunidade Claude Code | [Contribuir](docs/CONTRIBUTING.md) | [Arquitetura](docs/ARCHITECTURE.md)*
+**CodeChats Manager** makes your Claude Code conversations searchable, accessible, and useful. Transform your development workflow today! ✌️
+
+*by MAUGUS ✌️*

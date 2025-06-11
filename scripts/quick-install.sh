@@ -5,35 +5,35 @@
 
 set -e
 
-# Cores para output amigável
+# Colors for friendly output
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${BLUE}💬 CodeChats Manager - Instalação Rápida${NC}"
+echo -e "${BLUE}💬 CodeChats Manager - Quick Installation${NC}"
 echo "════════════════════════════════════════════════════════════"
 
-# Verificar se Claude Code está instalado
+# Check if Claude Code is installed
 if [ ! -d "$HOME/.claude" ]; then
-    echo -e "${RED}❌ Claude Code não encontrado${NC}"
-    echo -e "${YELLOW}Por favor, instale o Claude Code primeiro:${NC}"
+    echo -e "${RED}❌ Claude Code not found${NC}"
+    echo -e "${YELLOW}Please install Claude Code first:${NC}"
     echo "https://docs.anthropic.com/en/docs/claude-code"
     exit 1
 fi
 
-# Verificar dependências básicas
-echo -e "${YELLOW}🔍 Verificando dependências...${NC}"
+# Check basic dependencies
+echo -e "${YELLOW}🔍 Checking dependencies...${NC}"
 
 missing_deps=()
 command -v jq >/dev/null 2>&1 || missing_deps+=("jq")
 command -v python3 >/dev/null 2>&1 || missing_deps+=("python3")
 
 if [ ${#missing_deps[@]} -ne 0 ]; then
-    echo -e "${RED}❌ Dependências faltando: ${missing_deps[*]}${NC}"
+    echo -e "${RED}❌ Missing dependencies: ${missing_deps[*]}${NC}"
     echo
-    echo -e "${YELLOW}Instale com:${NC}"
+    echo -e "${YELLOW}Install with:${NC}"
     if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "  brew install ${missing_deps[*]}"
     else
@@ -42,40 +42,40 @@ if [ ${#missing_deps[@]} -ne 0 ]; then
     exit 1
 fi
 
-echo -e "${GREEN}✅ Dependências OK${NC}"
+echo -e "${GREEN}✅ Dependencies OK${NC}"
 
-# Criar diretórios
-echo -e "${YELLOW}📂 Criando diretórios...${NC}"
+# Create directories
+echo -e "${YELLOW}📂 Creating directories...${NC}"
 mkdir -p "$HOME/.claude/temp" "$HOME/.claude/commands"
 
-# Baixar arquivos principais (simulação - em produção seria de GitHub)
-echo -e "${YELLOW}📥 Baixando CodeChats Manager...${NC}"
+# Download main files
+echo -e "${YELLOW}📥 Downloading CodeChats Manager...${NC}"
 
-# Script principal
-curl -sSL "https://raw.githubusercontent.com/maugus/codechats-manager/main/codechats-main.sh" \
+# Main script
+curl -sSL "https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/src/codechats-main.sh" \
   -o "$HOME/.claude/temp/codechats-main.sh" 2>/dev/null || {
-  echo -e "${RED}❌ Erro ao baixar script principal${NC}"
-  echo "Verifique sua conexão com a internet"
+  echo -e "${RED}❌ Error downloading main script${NC}"
+  echo "Check your internet connection"
   exit 1
 }
 
-# Script de cache
-curl -sSL "https://raw.githubusercontent.com/maugus/codechats-manager/main/codechats-cache.py" \
+# Cache script
+curl -sSL "https://raw.githubusercontent.com/MAUGUS2/codechats-manager/main/src/codechats-cache.py" \
   -o "$HOME/.claude/temp/codechats-cache.py" 2>/dev/null || {
-  echo -e "${RED}❌ Erro ao baixar script de cache${NC}"
+  echo -e "${RED}❌ Error downloading cache script${NC}"
   exit 1
 }
 
-# Tornar executáveis
+# Make executable
 chmod +x "$HOME/.claude/temp/codechats-main.sh"
 chmod +x "$HOME/.claude/temp/codechats-cache.py"
 
-# Criar comando global
-echo -e "${YELLOW}🔗 Criando comando global...${NC}"
+# Create global command
+echo -e "${YELLOW}🔗 Creating global command...${NC}"
 ln -sf "$HOME/.claude/temp/codechats-main.sh" "$HOME/.claude/commands/codechats"
 
-# Configurar PATH
-echo -e "${YELLOW}🛤️ Configurando PATH...${NC}"
+# Configure PATH
+echo -e "${YELLOW}🛤️ Configuring PATH...${NC}"
 shell_config=""
 if [[ "$SHELL" == *"zsh"* ]]; then
     shell_config="$HOME/.zshrc"
@@ -87,38 +87,38 @@ if [ -n "$shell_config" ] && ! grep -q "\.claude/commands" "$shell_config" 2>/de
     echo "" >> "$shell_config"
     echo "# CodeChats Manager" >> "$shell_config"
     echo 'export PATH="$HOME/.claude/commands:$PATH"' >> "$shell_config"
-    echo -e "${GREEN}✅ PATH configurado em $shell_config${NC}"
+    echo -e "${GREEN}✅ PATH configured in $shell_config${NC}"
 else
-    echo -e "${YELLOW}⚠️ Configure o PATH manualmente:${NC}"
+    echo -e "${YELLOW}⚠️ Configure PATH manually:${NC}"
     echo 'export PATH="$HOME/.claude/commands:$PATH"'
 fi
 
-# Teste rápido
-echo -e "${YELLOW}🧪 Testando instalação...${NC}"
+# Quick test
+echo -e "${YELLOW}🧪 Testing installation...${NC}"
 if [ -x "$HOME/.claude/commands/codechats" ]; then
-    echo -e "${GREEN}✅ Instalação bem-sucedida!${NC}"
+    echo -e "${GREEN}✅ Installation successful!${NC}"
 else
-    echo -e "${RED}❌ Algo deu errado na instalação${NC}"
+    echo -e "${RED}❌ Something went wrong with installation${NC}"
     exit 1
 fi
 
-# Mensagem final
+# Final message
 echo
-echo -e "${GREEN}🎉 CodeChats Manager instalado com sucesso!${NC}"
+echo -e "${GREEN}🎉 CodeChats Manager installed successfully!${NC}"
 echo "════════════════════════════════════════════════════════════"
 echo
-echo -e "${BLUE}📖 Como usar:${NC}"
-echo "  1. Reinicie o terminal (ou execute: source ~/.zshrc)"
-echo "  2. Digite: codechats"
-echo "  3. Navegue e aproveite!"
+echo -e "${BLUE}📖 How to use:${NC}"
+echo "  1. Restart terminal (or run: source ~/.zshrc)"
+echo "  2. Type: codechats"
+echo "  3. Navigate and enjoy!"
 echo
-echo -e "${BLUE}📁 Arquivos instalados:${NC}"
+echo -e "${BLUE}📁 Installed files:${NC}"
 echo "  ~/.claude/temp/codechats-main.sh"
 echo "  ~/.claude/temp/codechats-cache.py"  
 echo "  ~/.claude/commands/codechats"
 echo
-echo -e "${BLUE}🔗 Links úteis:${NC}"
-echo "  📚 Documentação: https://github.com/MAUGUS2/codechats-manager"
+echo -e "${BLUE}🔗 Useful links:${NC}"
+echo "  📚 Documentation: https://github.com/MAUGUS2/codechats-manager"
 echo "  🐛 Issues: https://github.com/MAUGUS2/codechats-manager/issues"
 echo
 echo -e "${YELLOW}💡 Try it now: ${GREEN}codechats${NC}"
